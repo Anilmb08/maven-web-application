@@ -31,6 +31,7 @@ echo  "Node name is: ${env.NODE_NAME}"
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
 def mavenhome = tool name: 'maven3.8.6'
 try {
+sendSlackNotification{'STARTED'}
 
 //get the code from github repo
 stage ('checkoutcode'){
