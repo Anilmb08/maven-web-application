@@ -5,7 +5,7 @@ def sendSlackNotification(String buildStatus = 'STARTED') {
   // Default values
   def colorName = 'RED'
   def colorCode = '#FF0000'
-  def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+  def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
   def summary = "${subject} (${env.BUILD_URL})"
 
   // Override default values based on build status
@@ -31,7 +31,7 @@ echo  "Node name is: ${env.NODE_NAME}"
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
 def mavenhome = tool name: 'maven3.8.6'
 try {
-sendSlackNotification{'STARTED'}
+sendSlackNotification {'STARTED'}
 
 //get the code from github repo
 stage ('checkoutcode'){
@@ -56,7 +56,7 @@ sh "${mavenhome}/bin/mvn deploy"
 //deploy application into tomcat server
 stage ('deployapplicationintotomcatserver'){
 sshagent(['42c0ab26-2620-4f74-9d99-a5151718ec10']) {
-  sh "scp -o  StrictHostKeyChecking=no target/maven-web-application.war ec2-user@52.53.156.87:/opt/apache-tomcat-9.0.64/webapps"
+  sh "scp -o  StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.57.223.102:/opt/apache-tomcat-9.0.64/webapps"
 }
 }
 
