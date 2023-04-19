@@ -13,7 +13,13 @@ pipeline {
       steps{
         sh  'mvn clean sonar:sonar'
    }
-   }	  
+   }
+    stage('Build Docker Image'){
+       steps{
+	  sh ' docker build -t Anil08/maven-web-app .'
+	    }
+	  }
+	  
 	  
 	  
   }
