@@ -18,9 +18,6 @@ pipeline {
        steps{
 	  sh ' docker build -t anilkumarc401/dockerpocjobs .'
 	    }
-	  }
-	  
-	  
-	  
+    }
   }
 }
