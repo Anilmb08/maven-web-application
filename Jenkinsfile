@@ -16,7 +16,7 @@ pipeline {
    }
     stage('Build Docker Image'){
        steps{
-	  sh ' docker build -t Anil08/maven-web-app .'
+	  sh ' docker build -t anilkumarc401/dockerpocjobs .'
 	    }
 	  }
 	  
