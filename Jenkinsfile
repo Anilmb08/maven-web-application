@@ -18,6 +18,10 @@ pipeline {
        steps{
 	  sh ' docker build -t anilkumarc401/dockerpocjobs .'
 	    }
-    }
-  }
-}
+            }
+    stage('UploadArtifactsIntoNexus'){
+       steps{
+         sh  "mvn clean deploy"
+                   }
+                   }
+                   }
