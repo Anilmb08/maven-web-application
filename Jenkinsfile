@@ -3,7 +3,7 @@ pipeline {
   tools {
     maven 'maven' 
   }
-   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), pipelineTriggers([pollSCM('* * * * *')])])
+   properties([pipelineTriggers([pollSCM('* * * * *')])])
   stages {
     stage ('Build') {
       steps {
